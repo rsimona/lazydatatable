@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+
+<h:body>
+    <h2>Primefaces Lazy pagination and filters example</h2>
+
+    <h:form>
+        <p:dataTable var="employee" value="#{employeeBean.model}"
+                     paginator="true" rows="10"
+                     paginatorTemplate=
+                             "{RowsPerPageDropdown} {FirstPageLink}
+                             {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                     rowsPerPageTemplate="5,10,15" lazy="true">
+            <p:column headerText="Id" filterBy="#{employee.id}" filterMatchMode="contains" sortBy="#{employee.id}">
+                <h:outputText value="#{employee.id}"/>
+            </p:column>
+
+            <p:column headerText="Name" filterBy="#{employee.name}" filterMatchMode="contains" sortBy="#{employee.name}">
+                <h:outputText value="#{employee.name}" />
+            </p:column>
+
+            <p:column headerText="Phone Number" filterBy="#{employee.phoneNumber}" sortBy="#{employee.phoneNumber}"
+                      filterMatchMode="contains">
+                <h:outputText value="#{employee.phoneNumber}"/>
+            </p:column>
+
+            <p:column headerText="Address" filterBy="#{employee.address}"  filterMatchMode="contains" sortBy="#{employee.address}">
+                <h:outputText value="#{employee.address}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>
